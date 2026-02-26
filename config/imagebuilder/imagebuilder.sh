@@ -181,6 +181,9 @@ rebuild_firmware() {
     cd ${imagebuilder_path}
     echo -e "${STEPS} Start building OpenWrt with Image Builder..."
 
+    uci set system.@imm_init[0].opkg_mirror='https://mirrors.ustc.edu.cn/immortalwrt'
+    uci commit system
+
     # Selecting default packages, lib, theme, app and i18n, etc.
     my_packages="\
         acpid attr base-files bash bc blkid block-mount blockd bsdtar btrfs-progs busybox bzip2 \
